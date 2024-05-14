@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <title>{% block title %}Latex templates online{% endblock %}</title> -->
+    <!-- <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700,700italic|Source+Code+Pro:500">
+
+    <link rel="stylesheet" href="/static/fontawesome-free/css/all.min.css" />
+
+    <link rel="stylesheet" href="/static/css/site.css" />
+
+</head>
+
+<body>
+
+    <nav id="navbar" hx-trigger="load" hx-get="/partial/navbar"></nav>
+
+    <div id="main_content" hx-trigger="load" hx-get="/partial/content"></div>
+
+    <footer>
+        <div class="copyright">
+            Powered by <a href="https://fastapi.tiangolo.com/">FastAPI</a> and <a href="https://htmx.org"
+                target="_blank">HTMX</a>
+        </div>
+        <div class="links">
+            <a href="https://github.com/mihail8531/latex-templates-online">
+                <img src="/static/img/github-mark.svg" height="25" width="25"></p>
+            </a>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

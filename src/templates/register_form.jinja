@@ -1,0 +1,14 @@
+<form class="register-form" hx-post="/user/create" hx-target=".register-form" hx-swap="outerHTML">
+    <input name="login" type="text" placeholder="логин" />
+    <input name="password" type="password" placeholder="пароль" />
+    <input name="display_name" type="text" placeholder="отображаемое имя" />
+    <input name="email" type="text" placeholder="адрес электронной почты" />
+    <button type="submit">Submit</button>
+    <p class="message">Already registered? <a href="" hx-trigger="click" hx-target=".register-form"
+            hx-get="/partial/login_form" hx-swap="outerHTML">Sign In</a></p>
+    <ul>
+        {% for error_line in error_msgs %}
+        <li>{{ error_line }}</li>
+        {% endfor %}
+    </ul>
+</form>
