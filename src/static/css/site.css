@@ -1,3 +1,6 @@
+html, body {
+    height: 80%;
+}
 .container {
     display: grid;
     grid-template-columns: 5% 1fr 5%;
@@ -63,4 +66,133 @@ li {
 
 .links {
     margin-top: 20px;
+}
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Высота контейнера будет равна высоте экрана */
+}
+
+/* Основные стили для формы */
+.login-form,
+.register-form {
+    width: 300px;
+    padding: 2em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Стили для полей ввода */
+.login-form input[type="text"],
+.login-form input[type="password"],
+.register-form input[type="text"],
+.register-form input[type="password"] {
+    width: calc(100% - 20px);
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Стили для кнопки */
+.login-form button[type="submit"],
+.register-form button[type="submit"] {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button[type="submit"]:hover,
+.register-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Стили для текста сообщения */
+.login-form .message,
+.register-form .message {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.login-form .message a,
+.register-form .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-form .message a:hover,
+.register-form .message a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для блока ошибок */
+#login-form-error-msg,
+.register-form ul {
+    margin-top: 1em;
+    color: red;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.register-form ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.register-form ul li {
+    margin-bottom: 0.5em;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+}
+
+nav .navbar {
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+}
+
+nav .navbar i {
+    margin-left: 0.5em;
+}
+
+nav span {
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 1em;
+    padding: 0.5em 1em;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #45a049;
+}
+
+.nav-item i {
+    margin-left: 0.5em;
 }
