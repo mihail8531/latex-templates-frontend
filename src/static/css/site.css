@@ -216,12 +216,10 @@ nav .logout {
     width: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #f4f4f4;
-    border-right: 1px solid #ccc;
     align-self: center;
-    border-radius: 10px;
     height: 98%;
     margin-left: 10px;
+    align-items: center;
 }
 
 .items {
@@ -231,6 +229,7 @@ nav .logout {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    text-align: center;
 }
 
 .item {
@@ -264,6 +263,7 @@ nav .logout {
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    align-self: stretch;
 }
 
 .green-button:hover {
@@ -337,6 +337,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    overflow-y: auto;
     /* align-items: center; */
 }
 
@@ -347,3 +348,8 @@ img {
     flex-direction: column;
 }
 
+.panel {
+    border-radius: 10px;
+    border-right: 1px solid #ccc;
+    background-color: #f4f4f4;
+}
