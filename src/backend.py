@@ -4,7 +4,8 @@ from warnings import warn
 
 from pydantic import TypeAdapter
 
-from schemas.workspace import Workspace, WorkspaceHeader, UserHeader
+from schemas.template import Template, TemplateCreate, TemplateHeader
+from schemas.workspace import Workspace, WorkspaceCreate, WorkspaceHeader, UserHeader
 
 
 class BackendError(BaseException):
@@ -16,6 +17,10 @@ class InvalidCredentialsError(BackendError):
 
 
 class NotAuthorizedError(BackendError):
+    pass
+
+
+class WorkspaceCreateError(BackendError):
     pass
 
 
@@ -49,3 +54,24 @@ class BackendService:
     async def get_workspace(self, workspace_id: int) -> Workspace:
         response = await self.client.get(f"/workspace/{workspace_id}")
         return Workspace.model_validate_json(response.content)
+
+    async def create_workspace(self, workspace_create: WorkspaceCreate) -> None:
+        response = await self.client.post(
+            "/workspace/create", json=workspace_create.model_dump()
+        )
+        if response.status_code != status.HTTP_200_OK:
+            raise WorkspaceCreateError()
+
+    async def create_template(
+        self, workspace_id: int, template_create: TemplateCreate
+    ) -> TemplateHeader:
+        response = await self.client.post(
+            f"/workspace/{workspace_id}/template", json=template_create.model_dump()
+        )
+        return TemplateHeader.model_validate_json(response.content)
+
+    async def get_template(self, workspace_id: int, template_id: int) -> Template:
+        response = await self.client.get(
+            f"/workspace/{workspace_id}/template/{template_id}"
+        )
+        return Template.model_validate_json(response.content)

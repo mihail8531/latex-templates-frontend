@@ -1,0 +1,8 @@
+<form class="create-workspace-form" hx-post="/partial/create_template?workspace_id={{ workspace_id }}"
+    hx-target=".main-content" hx-swap="innerHTML">
+    <h2>Создать шаблон</h2>
+    <input type="text" name="name" placeholder="Название шаблона" />
+    <textarea type="text" name="description" rows="5" placeholder="Описание шаблона"></textarea>
+    <button class="green-button" type="submit">Создать</button>
+    <p id="create-workspace-error-msg"></p>
+</form>

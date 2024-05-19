@@ -1,0 +1,20 @@
+<div class="container">
+    <div id="sidebar">
+        <div class="items">
+            {% for ticket_set in template.ticket_sets %}
+            <div title="{{ ticket_set.description }}" class="item">
+                <div class="title"> {{ ticket_set.name }}</div>
+                <div class="date"> {{ ticket_set.creation_timestamp.date() }} </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="green-button" href="#" hx-get="/partial/create_workspace_form" hx-target=".main-content"
+            hx-swap="innerHTML">Создать набор билетов</button>
+    </div>
+    <div class="main-content">
+        <div class="template-editor">
+            <textarea class="latex-editor" placeholder="LuaLatex">{{ template.latex }}</textarea>
+            <textarea class="lua-editor" placeholder="Lua">{{ template.lua_example }}</textarea>
+        </div>
+    </div>
+</div>

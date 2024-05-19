@@ -23,3 +23,10 @@ class Workspace(WorkspaceHeader):
     admin: UserHeader
     users: list[UserHeader]
     templates: list[TemplateHeader]
+
+    @property
+    def template_ids(self) -> set[int]:
+        res = set()
+        for template in self.templates:
+            res.add(template.id)
+        return res

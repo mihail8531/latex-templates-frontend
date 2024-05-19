@@ -1,16 +1,48 @@
 <div class="workspace-details">
     <h2>{{ workspace.name }}</h2>
     <p> {{ workspace.description }}</p>
-    <h3>Templates</h3>
-    <ul>
-        {% for template in workspace.templates %}
-            <li> {{ template.name }} </li>
-        {% endfor %}
-    </ul>
-    <h3>Participants</h3>
-    <ul>
+    <div class="two-list">
+        <div class="resizable-list">
+            <h3>Список шаблонов</h3>
+            <div class="items">
+                {% for template in workspace.templates %}
+                <div title="{{ template.description }}" class="item"
+                    hx-get="/partial/workspace/{{ workspace.id }}/template/{{ template.id }}" hx-target="#main-content"
+                    hx-swap="innerHTML" hx-trigger="click">
+                    <div class="title"> {{ template.name }}</div>
+                    <div class="date"> {{ template.creation_timestamp.date() }} </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <button class="green-button" href="#" hx-get="/partial/create_template_form?workspace_id={{ workspace.id }}"
+                hx-target=".main-content" hx-swap="innerHTML">Создать шаблон</button>
+        </div>
+        <div class="items">
+            {% for user in workspace.users %}
+            <div title="{{ user.display_name }}" class="item">
+                <div class="title"> {{ user.display_name }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- <ul>
         {% for user in workspace.users %}
             <li> {{ user.display_name }} </li>
         {% endfor %}
-    </ul>
+    </ul> -->
 </div>
+
+
+
+<!-- <div class="items">
+    {% for workspace in workspaces %}
+    <div title="{{ workspace.description }}" class="item"
+        hx-get="/partial/workspace/{{ workspace.id }}" hx-trigger="click" hx-target=".main-content"
+        hx-swap="innerHTML">
+        <div class="title"> {{ workspace.name }}</div>
+        <div class="date"> {{ workspace.creation_timestamp.date() }} </div>
+    </div>
+    {% endfor %}
+</div> -->

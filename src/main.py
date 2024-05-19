@@ -5,8 +5,6 @@ from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 from dependencies.template import get_template_response
-from pages.registry import PageRegistry
-from pages.main_page import MainPage
 from routes import partial_router
 from settings import Settings
 from contextlib import asynccontextmanager
@@ -18,7 +16,6 @@ settings = Settings(_env_file=".env", _env_file_encoding="utf-8")  # type: ignor
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     app.state.settings = settings
-    app.state.page_registry = PageRegistry((MainPage,))
     yield
 
 
