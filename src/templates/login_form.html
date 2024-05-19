@@ -1,7 +1,7 @@
 <form class="login-form" hx-post="/partial/login" hx-target="#login-form-error-msg" hx-trigger="submit">
     <input type="text" name="login" placeholder="username" />
     <input type="password" name="password" placeholder="password" />
-    <button id="test" type="submit">login</button>
+    <button type="submit">login</button>
     <p class="message">Not registered? <a href="" hx-trigger="click" hx-target=".login-form"
             hx-get="/partial/register_form" hx-swap="outerHTML">Create an account</a></p>
     <p id="login-form-error-msg"></p>

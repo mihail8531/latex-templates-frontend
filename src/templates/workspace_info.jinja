@@ -1,0 +1,16 @@
+<div class="workspace-details">
+    <h2>{{ workspace.name }}</h2>
+    <p> {{ workspace.description }}</p>
+    <h3>Templates</h3>
+    <ul>
+        {% for template in workspace.templates %}
+            <li> {{ template.name }} </li>
+        {% endfor %}
+    </ul>
+    <h3>Participants</h3>
+    <ul>
+        {% for user in workspace.users %}
+            <li> {{ user.display_name }} </li>
+        {% endfor %}
+    </ul>
+</div>

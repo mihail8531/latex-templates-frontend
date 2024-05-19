@@ -1,42 +1,16 @@
-html, body {
-    height: 80%;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
+
 .container {
     display: grid;
     grid-template-columns: 5% 1fr 5%;
-}
-
-.navbar-toggler {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
-}
-
-nav {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: .5rem 1rem;
-}
-
-.navbar-nav {
-    display: flex;
-    flex-direction: row;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
-
-.nav-item {
-    margin: 0 1em;
-}
-
-#navbarSupportedContent {
-    display: flex !important;
-    flex-basis: auto;
+    gap: 0;
+    background-color: white;
 }
 
 a {
@@ -44,16 +18,30 @@ a {
 }
 
 footer {
+    height: 5%;
     position: fixed;
     bottom: 0;
     left: 0;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    padding-top: 25px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
     color: #838383;
     text-align: center;
     background-color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+}
+
+.copyright {
+    vertical-align: middle;
+}
+
+.links {
+    height: 100%;
+    /* margin-top: 5px; */
+    /* vertical-align: middle; */
 }
 
 li {
@@ -64,14 +52,12 @@ li {
     margin: 2em;
 }
 
-.links {
-    margin-top: 20px;
-}
 #main-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Высота контейнера будет равна высоте экрана */
+    height: 86%;
+    background-color: #f4f4f4;
 }
 
 /* Основные стили для формы */
@@ -90,7 +76,7 @@ li {
 .login-form input[type="password"],
 .register-form input[type="text"],
 .register-form input[type="password"] {
-    width: calc(100% - 20px);
+    width: calc(100%);
     margin-bottom: 1em;
     padding: 0.5em;
     border: 1px solid #ccc;
@@ -154,6 +140,7 @@ li {
 .register-form ul li {
     margin-bottom: 0.5em;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -161,6 +148,10 @@ nav {
     padding: 1em;
     background-color: #333;
     color: white;
+    height: 5%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    gap: 20px;
 }
 
 nav .navbar {
@@ -175,6 +166,18 @@ nav .navbar i {
 
 nav span {
     display: flex;
+}
+
+nav .username {
+    display: block;
+    align-self: center;
+    color: rgb(221, 221, 221);
+}
+
+nav .logout {
+    display: block;
+    align-self: center;
+    color: crimson;
 }
 
 .nav-item {
@@ -195,4 +198,118 @@ nav span {
 
 .nav-item i {
     margin-left: 0.5em;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    flex-direction: row;
+    gap: 10px;
+    /* height: calc(100vh - 60px); */
+    /* Adjust height based on nav height */
+    /* margin-top: 60px; */
+    /* Adjust margin-top to match nav height */
+}
+
+.sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+    align-self: center;
+    border-radius: 10px;
+    height: 98%;
+    margin-left: 10px;
+}
+
+.workspace-items {
+    overflow-y: auto;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.workspace-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.workspace-item .date {
+    padding-top: 5px;
+    color: #838383;
+}
+
+.workspace-item:hover {
+    background-color: #e0e0e0;
+}
+
+.green-button {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.green-button:hover {
+    background-color: #45a049;
+}
+
+
+.workspace-details h2 {
+    margin-top: 0;
+}
+
+.workspace-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.workspace-details ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.logo {
+    display: block;
+    height: 50%;
+    width: fit-content;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-content {
+    text-align: center;
+    align-self: center;
+    flex-grow: 1;
+    height: 90%;
+    margin-right: 10px;
+}
+
+.create-workspace-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px:
 }

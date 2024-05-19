@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="sidebar">
+        <div class="workspace-items">
+            {% for workspace in workspaces %}
+            <div title="{{ workspace.description }}" class="workspace-item"
+                hx-get="/partial/workspace/{{ workspace.id }}" hx-trigger="click" hx-target=".main-content"
+                hx-swap="innerHTML">
+                <div class="title"> {{ workspace.name }}</div>
+                <div class="date"> {{ workspace.creation_timestamp.date() }} </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="green-button" href="#" hx-get="/partial/create_workspace_form" hx-target=".main-content"
+            hx-swap="innerHTML">Create Workspace</button>
+    </div>
+    <div class="main-content">
+        <div class="workspace-details">
+            <h2>Workspace Title</h2>
+            <p>Description of the workspace goes here.</p>
+        </div>
+    </div>
+</div>
