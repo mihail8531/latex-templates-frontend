@@ -162,3 +162,13 @@ async def get_template_page(
 ) -> Response:
     template = await backend.get_template(workspace_id, template_id)
     return template_response("template.jinja", data={"template": template.model_dump()})
+
+
+@partial_router.get("/create_tickets_set_form")
+async def get_create_tickets_set_form(
+    workspace_id: int,
+    template_response: TemplateResponse = Depends(get_template_response),
+) -> Response:
+    return template_response(
+        "create_template_form.jinja", data={"workspace_id": workspace_id}
+    )

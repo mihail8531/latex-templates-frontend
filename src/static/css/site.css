@@ -300,6 +300,7 @@ img {
 }
 
 .main-content {
+    overflow-y: auto;
     text-align: center;
     align-self: center;
     flex-grow: 1;
@@ -320,6 +321,7 @@ img {
 .create-workspace-form input {
     margin: 10px;
 }
+
 .create-workspace-form textarea {
     margin: 10px;
     resize: vertical;
@@ -352,4 +354,16 @@ img {
     border-radius: 10px;
     border-right: 1px solid #ccc;
     background-color: #f4f4f4;
+}
+
+.template-editor {
+    display: flex;
+    flex-direction: column;
+}
+
+.latex-editor {
+    resize: none;
+    overflow: hidden;
+    min-height: 50px;
+    width: 80%;
 }

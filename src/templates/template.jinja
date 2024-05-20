@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <div id="sidebar">
         <div class="items">
             {% for ticket_set in template.ticket_sets %}
@@ -13,8 +13,11 @@
     </div>
     <div class="main-content">
         <div class="template-editor">
-            <textarea class="latex-editor" placeholder="LuaLatex">{{ template.latex }}</textarea>
-            <textarea class="lua-editor" placeholder="Lua">{{ template.lua_example }}</textarea>
+            <!-- <textarea oninput="auto_grow(this)" class="latex-editor"
+                placeholder="LuaLatex">-->
+           <code hx-on:htmx-after-on-load="alert();" class="language-lua">print("hello world")</code>
+            <!-- <textarea oninput="auto_grow(this)" class="lua-editor"
+                placeholder="Lua">{{ template.lua_example }}</textarea> -->
         </div>
     </div>
 </div>
