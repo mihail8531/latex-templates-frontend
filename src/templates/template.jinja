@@ -1,23 +1,28 @@
-<div class="container" >
-    <div id="sidebar">
+<div class="container">
+    <div id="sidebar" class="panel">
+        <h3>Список билетов</h3>
         <div class="items">
-            {% for ticket_set in template.ticket_sets %}
-            <div title="{{ ticket_set.description }}" class="item">
-                <div class="title"> {{ ticket_set.name }}</div>
-                <div class="date"> {{ ticket_set.creation_timestamp.date() }} </div>
+            {% for tickets_set in template.tickets_sets %}
+            <div title="{{ tickets_set.description }}" class="item" hx-trigger="click" hx-target=".main-content"
+                hx-get="/partial/workspace/{{ template.workspace_id }}/template/{{ tickets_set.template_id }}/tickets_set/{{ tickets_set.id }}">
+                <div class="title">{{ tickets_set.name }}</div>
+                <div class="date">{{ tickets_set.creation_timestamp.date() }} </div>
             </div>
             {% endfor %}
         </div>
-        <button class="green-button" href="#" hx-get="/partial/create_workspace_form" hx-target=".main-content"
-            hx-swap="innerHTML">Создать набор билетов</button>
+        <button class="green-button" href="#"
+            hx-get="/partial/workspace/{{ template.workspace_id }}/template/{{ template.id }}/create_tickets_set_form"
+            hx-target=".main-content" hx-swap="innerHTML">Создать набор билетов</button>
     </div>
     <div class="main-content">
-        <div class="template-editor">
-            <!-- <textarea oninput="auto_grow(this)" class="latex-editor"
-                placeholder="LuaLatex">-->
-           <code hx-on:htmx-after-on-load="alert();" class="language-lua">print("hello world")</code>
-            <!-- <textarea oninput="auto_grow(this)" class="lua-editor"
-                placeholder="Lua">{{ template.lua_example }}</textarea> -->
-        </div>
+        <form class="template-editor"
+            hx-put="/partial/workspace/{{ template.workspace_id }}/template/{{ template.id }}?name={{ template.name }}&description={{ template.description }}"
+            hx-swap="none">
+            <textarea oninput="auto_grow(this)" class="latex-editor" name="latex"
+                placeholder="LuaLatex">{{ template.latex }}</textarea>
+            <textarea oninput="auto_grow(this)" class="lua-editor" name="lua"
+                placeholder="Пример Lua">{{ template.lua_example }}</textarea>
+            <div id="template-control" class="panel"><button class="green-button">Сохранить</button></div>
+        </form>
     </div>
 </div>

@@ -1056,6 +1056,25 @@ files = [
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
+name = "pydantic-i18n"
+version = "0.4.4"
+description = "pydantic-i18n is an extension to support an i18n for the pydantic error messages."
+optional = false
+python-versions = ">=3.8.1"
+files = [
+    {file = "pydantic_i18n-0.4.4-py3-none-any.whl", hash = "sha256:f1e06c01efa602ebeccfd44099009c9b86d0024d7c855038c4ae3f02c9a08339"},
+    {file = "pydantic_i18n-0.4.4.tar.gz", hash = "sha256:a4e51ad95fd3bf508cce201916eecfff58a9e460b8ef22d638cc36f8047ec1d0"},
+]
+
+[package.dependencies]
+pydantic = ">=1.9.0"
+
+[package.extras]
+dev = ["autoflake (==2.3.1)", "flake8 (==7.0.0)", "pre-commit"]
+doc = ["markdown (==3.6)", "markdown-include (==0.8.1)", "mkdocs (==1.5.3)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-material (==9.5.18)", "pyyaml (==6.0.1)", "typer (==0.12.3)"]
+test = ["babel (==2.14.0)", "black (==24.4.0)", "flake8 (==7.0.0)", "isort (==5.13.2)", "mypy (==1.9.0)", "pydantic (>=2)", "pytest (==7.4.3)", "pytest-cov (==5.0.0)", "pytest-lazy-fixture (==0.6.3)"]
+
+[[package]]
 name = "pydantic-settings"
 version = "2.2.1"
 description = "Settings management using Pydantic"
@@ -1744,4 +1763,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.12.0"
-content-hash = "37e3a94ace099ffd4f7aeaa57d3557668a55a570e55483137d27a5d5f6fc75ad"
+content-hash = "989af022c26a2d68f5168c6472dad1aaab87ead281359a28ad2b5ee9db4aa82d"

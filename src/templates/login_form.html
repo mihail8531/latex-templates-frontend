@@ -1,6 +1,6 @@
 <form class="login-form" hx-post="/partial/login" hx-target="#login-form-error-msg" hx-trigger="submit">
-    <input type="text" name="login" placeholder="Логин" />
-    <input type="password" name="password" placeholder="Пароль" />
+    <input class="default-input" type="text" name="login" placeholder="Логин" />
+    <input class="default-input" type="password" name="password" placeholder="Пароль" />
     <button type="submit">Войти</button>
     <p class="message">Нет аккаунта? <a href="" hx-trigger="click" hx-target=".login-form"
             hx-get="/partial/register_form" hx-swap="outerHTML">Создать аккаунт</a></p>

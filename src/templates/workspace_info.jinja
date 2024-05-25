@@ -1,4 +1,5 @@
-<div class="workspace-details">
+<div class="workspace-details" hx-trigger="load" hx-target="#participants"
+    hx-get="/partial/workspace/{{ workspace.id }}/participants" hx-swap="outerHTML">
     <h2>{{ workspace.name }}</h2>
     <p> {{ workspace.description }}</p>
     <div class="two-list">
@@ -7,8 +8,8 @@
             <div class="items">
                 {% for template in workspace.templates %}
                 <div title="{{ template.description }}" class="item"
-                    hx-get="/partial/workspace/{{ workspace.id }}/template/{{ template.id }}" hx-target="#main-content"
-                    hx-swap="innerHTML" hx-trigger="click">
+                    hx-get="/partial/workspace/{{ workspace.id }}/template/{{ template.id }}" hx-swap="innerHTML"
+                    hx-trigger="click" hx-target="#main-content" hx-on:htmx:afterOnLoad="alert('hello')">
                     <div class="title"> {{ template.name }}</div>
                     <div class="date"> {{ template.creation_timestamp.date() }} </div>
                 </div>
@@ -18,13 +19,7 @@
             <button class="green-button" href="#" hx-get="/partial/create_template_form?workspace_id={{ workspace.id }}"
                 hx-target=".main-content" hx-swap="innerHTML">Создать шаблон</button>
         </div>
-        <div class="items">
-            {% for user in workspace.users %}
-            <div title="{{ user.display_name }}" class="item">
-                <div class="title"> {{ user.display_name }}</div>
-            </div>
-            {% endfor %}
-        </div>
+        <div id="participants"></div>
     </div>
 
     <!-- <ul>
@@ -36,13 +31,13 @@
 
 
 
-<!-- <div class="items">
-    {% for workspace in workspaces %}
-    <div title="{{ workspace.description }}" class="item"
-        hx-get="/partial/workspace/{{ workspace.id }}" hx-trigger="click" hx-target=".main-content"
-        hx-swap="innerHTML">
-        <div class="title"> {{ workspace.name }}</div>
-        <div class="date"> {{ workspace.creation_timestamp.date() }} </div>
-    </div>
-    {% endfor %}
-</div> -->
+<!-- <div class=" items">
+                    {% for workspace in workspaces %}
+                    <div title="{{ workspace.description }}" class="item" hx-get="/partial/workspace/{{ workspace.id }}"
+                        hx-trigger="click" hx-target=".main-content" hx-swap="innerHTML">
+                        <div class="title"> {{ workspace.name }}</div>
+                        <div class="date"> {{ workspace.creation_timestamp.date() }} </div>
+                    </div>
+                    {% endfor %}
+        </div> -->
+<!-- auto_grow(document.getElementsByClassName('latex-editor')[0]) -->

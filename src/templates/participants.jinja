@@ -1,0 +1,23 @@
+<div class="resizable-list panel" id="participants">
+    <h3>Список участников</h3>
+    <div class="items">
+        {% for user in workspace.users %}
+        <div title="{{ user.display_name }}" class="item">
+            <div class="title"> {{ user.display_name }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if workspace.admin.id == user.id %}
+    <div id="workspace-control">
+        <form class="horizontal-form" hx-target="#participants" hx-swap="outerHTML"
+            hx-post="/partial/workspace/{{ workspace.id }}/add_participant">
+            <input class="{{ 'error-input' if user_add_error else 'default-input' }}" placeholder="Логин" type="text"
+                name="login" value="{{ entered_login }}">
+            <button type="submit" class="green-button" title="Добавить участника">+</button>
+        </form>
+        {% if user_add_error %}
+        <p id="workspace-add-user-error">{{ user_add_error }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>

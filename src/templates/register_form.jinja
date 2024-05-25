@@ -1,14 +1,18 @@
-<form class="register-form" hx-post="/user/create" hx-target=".register-form" hx-swap="outerHTML">
-    <input name="login" type="text" placeholder="Логин" />
-    <input name="password" type="password" placeholder="Пароль" />
-    <input name="display_name" type="text" placeholder="Отображаемое имя" />
-    <input name="email" type="text" placeholder="Адрес электронной почты" />
+<form class="register-form" hx-post="/partial/register" hx-target=".register-form" hx-swap="outerHTML">
+    <input class="{{ 'error-input' if 'login' in error_locs else 'default-input' }}" name="login" type="text" value="{{ entered_values.login }}"
+        placeholder="Логин" />
+    <input class="{{ 'error-input' if 'password' in error_locs else 'default-input' }}" name="password" type="password" value="{{ entered_values.password }}"
+        placeholder="Пароль" />
+    <input class="{{ 'error-input' if 'display_name' in error_locs else 'default-input' }}" name="display_name" value="{{ entered_values.display_name }}"
+        type="text" placeholder="Отображаемое имя" />
+    <input class="{{ 'error-input' if 'email' in error_locs else 'default-input' }}" name="email" type="text" value="{{ entered_values.email }}"
+        placeholder="Адрес электронной почты" />
     <button type="submit">Создать</button>
-    <p class="message">Уже зарегистрированы? <a href="" hx-trigger="click" hx-target=".register-form"
+    <p class="message">Уже зарегистрированы? <a href="" hx-trigger="click" hx-target=".register-form" 
             hx-get="/partial/login_form" hx-swap="outerHTML">Войти</a></p>
     <ul>
-        {% for error_line in error_msgs %}
-        <li>{{ error_line }}</li>
+        {% for error in errors %}
+        <li>{{ loc_map[error.loc[0]] }}: {{ error.msg }}</li>
         {% endfor %}
     </ul>
 </form>

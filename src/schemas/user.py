@@ -24,15 +24,14 @@ digits = set(string.digits)
 
 
 def _validate_password(
-    password: SecretStr,
+    password: str,
     special_chars: str = "$@#%!^&*()-_+={}[]",
     includes_special_chars: bool = False,
     includes_numbers: bool = False,
     includes_lowercase: bool = False,
     includes_uppercase: bool = False,
-) -> SecretStr:
-    password_str = password.get_secret_value()
-    password_char_set = set(password_str)
+) -> str:
+    password_char_set = set(password)
     special_char_set = set(special_chars)
     if includes_special_chars:
         assert (
@@ -42,11 +41,11 @@ def _validate_password(
         assert len(password_char_set & digits) > 0, "Пароль должен содержать цифру"
     if includes_lowercase:
         assert (
-            not password_str.isupper()
+            not password.isupper()
         ), "Пароль должен содержать как минимум одну прописную букву"
     if includes_uppercase:
         assert (
-            not password_str.islower()
+            not password.islower()
         ), "Пароль должен содержать как минимум одну заглавную букву"
 
     return password
@@ -72,7 +71,7 @@ def get_password_validator(
 
 
 Password: TypeAlias = Annotated[
-    SecretStr,
+    str,
     Field(min_length=PASSWORD_MIN_LENGTH),
     get_password_validator(),
 ]

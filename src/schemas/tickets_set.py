@@ -14,5 +14,12 @@ class TicketsSetHeader(TicketsSetBase):
     creation_timestamp: datetime
 
 
+class TicketsSetSource(BaseModel):
+    filename: str
+    url: HttpUrl
+
+
 class TicketsSet(TicketsSetHeader):
     pdf_url: HttpUrl
+    lua: str | None
+    additional_sources: list[TicketsSetSource]

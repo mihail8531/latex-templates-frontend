@@ -1,0 +1,6 @@
+<form id="tickets-set" hx-post="">
+    <embed class="pdf-view" type="application/pdf" src="{{ tickets_set.pdf_url }}" />
+    <textarea oninput="auto_grow(this)" class="lua-editor" name="lua"
+        placeholder="Lua">{{ tickets_set.lua }}</textarea>
+    <div id="template-control" class="panel"><button class="green-button">Сохранить</button></div>
+</form>

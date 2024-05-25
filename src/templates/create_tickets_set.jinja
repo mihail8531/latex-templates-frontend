@@ -1,0 +1,21 @@
+<form class="create-tickets-set-form" hx-post="/partial/workspace/{{ workspace.id }}/template" hx-target=".main-content"
+    hx-swap="innerHTML">
+    <h2>Создать комплект билетов</h2>
+    <input type="text" name="name" placeholder="Название шаблона" />
+    <textarea style="resize: vertical;" type="text" name="description" rows="5" placeholder="Описание шаблона"></textarea>
+    <textarea oninput="auto_grow(this)" class="lua-editor" name="lua"
+        placeholder="Lua">{{ template.lua_example }}</textarea>
+    <h3>Дополнительные файлы</h3>
+    <div id="files-list">
+        <input class="file-input" type="file" name="file" />
+    </div>
+    <div style="display: flex;">
+        <button class="green-button" hx-get="/partial/get_file_input" hx-target="#files-list"
+            hx-swap="beforeend">+</button>
+        <button class="green-button" hx-delete="/partial/delete" hx-target="previous .file-input"
+            hx-swap="outerHTML">-</button>
+    </div>
+    <hr>
+    <button class="green-button" type="submit">Создать</button>
+    <p id="create-workspace-error-msg"></p>
+</form>
